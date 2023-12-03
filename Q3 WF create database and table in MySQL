@@ -5,18 +5,20 @@ var con=mysql.createConnection({
  host:"localhost",
  user:"root",
  password:"root",
- database:"mydb"
 });
 con.connect(function(err) {
  if(err) throw err;
  console.log("connected!");
- //var sql="create table customers(name varchar(255),address varchar(255))";
- var a=[["ram","pune"],["ada","mumbai"]];
- var sql="insert into customers (name,address) values ?";
- con.query(sql,[a],function(err,result){
+ con.query("Create Database test",function(err,result){
  if(err) throw err;
- console.log("Table created");
+ console.log("Database created");
  });
+ 
+ var sql="create table test.customers(name varchar(255),address varchar(255))";
+ con.query(sql,function(err,result){
+if(err) throw err;
+console.log("table created");
+});
 });
 --------------------------------------------------------------------------------------------------------------------------------------
 Execution Steps –
